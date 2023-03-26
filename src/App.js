@@ -1,18 +1,23 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
-import Cart from "./Pages/cart/Cart";
+import {Cart} from "./Pages/cart/Cart";
 import Shope from "./Pages/shop/Shope";
+import { ShopContextProvider } from "./context/shop-context";
 function App() {
   return (
-<Router>
-  <Navbar/>
-<Routes>
-  <Route path="/"  element={<Shope/>} />
-  <Route path="/cart" element={<Cart/>}/>
-
-</Routes>
-</Router>)
+    <div className="App">
+      <ShopContextProvider>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Shope />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+        </Router>
+      </ShopContextProvider>
+    </div>
+  );
 }
 
 export default App;
